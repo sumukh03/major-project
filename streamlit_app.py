@@ -22,7 +22,12 @@ page = st.selectbox("Select the data you want to see" ,["Raw Data", "Prediction"
 if page == "Raw Data":
     st.title("Raw-data")
     st.write(train_data)
-    st.plotly_chart(plotting_utils.plot_raw_data(train_data["Date"],{"train_data":train_data["Close"]},"blue"))
+    graph_type=st.selectbox("Select the data you want to see" ,["Line Chart","Candle Sticks"])
+    if graph_type=="Line Chart":
+        st.plotly_chart(plotting_utils.plot_raw_data(train_data["Date"],{"train_data":train_data["Close"]},"blue"))
+    elif graph_type=="Candle Sticks":
+        st.plotly_chart(plotting_utils.plot_candle(train_data["Date"],train_data))
+        
 elif page == "Prediction":
     # st,write(predicted_data)
     st.title("Predictions")

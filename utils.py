@@ -18,7 +18,7 @@ def get_train_data(ticker):
     data=pdr.get_data_yahoo(ticker,"2015-01-01","2024-01-01")
     data.reset_index(inplace=True)
     train_length=int(len(data)*0.9)
-    return data[["Date","Close"]][:train_length]
+    return data[["Date","Close","Open","High","Low"]][:train_length]
 
 
 def get_data(ticker):
